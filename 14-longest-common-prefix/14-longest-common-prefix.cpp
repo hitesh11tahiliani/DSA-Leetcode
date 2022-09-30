@@ -15,7 +15,7 @@ public:
         
         for (int i=0; i<a.size(); i++){
             if (a[i]==b[i]){
-                ans = ans + a[i];
+                ans += a[i];
             }
             else{
                 break;

@@ -24,7 +24,6 @@ class Solution
 		vector<string>find_permutation(string s)
 		{
 		    vector<string>ans;
-		    sort(s.begin(),s.end());
 		    solve(0,s,ans);
 		    sort(ans.begin(),ans.end());
 		    return ans;

@@ -36,31 +36,32 @@ int kthSmallest(int mat[MAX][MAX], int n, int k)
   
   
 //   approch 1 using vector 
-  int count =0;
-  vector<int> ans;
+//   int count =0;
+//   vector<int> ans;
   
-  for(int i=0;i<n;i++)
-    {
-        for(int j=0;j<n;j++)
-        {
-            ans.push_back(mat[i][j]);
-        }
-    }
-    sort(ans.begin(), ans.end());
-    return ans[k-1];
+//   for(int i=0;i<n;i++)
+//     {
+//         for(int j=0;j<n;j++)
+//         {
+//             ans.push_back(mat[i][j]);
+//         }
+//     }
+//     sort(ans.begin(), ans.end());
+//     return ans[k-1];
 
 
 
 // approch 2 using max heap;
-// priority_queue<int>maxh;
-// for(int i=0;i<n;i++)
-// {
-//     for(int j=0;j<n;j++)
-//     {
-//         maxh.push(mat[i][j]);
-//         if(maxh.size() > k) maxh.pop();
-//     }
-// }
-// return maxh.top();
+priority_queue<int>maxh;
+for(int i=0;i<n;i++)
+{
+    for(int j=0;j<n;j++)
+    {
+        maxh.push(mat[i][j]);
+        if(maxh.size() > k) 
+            maxh.pop();
+    }
+}
+return maxh.top();
     
 }

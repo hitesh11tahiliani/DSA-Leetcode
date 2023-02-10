@@ -45,31 +45,48 @@ struct Node
 
 class Solution{
   public:
-  Node* merge(Node* a, Node* b){
-    if(a==NULL)
-       return b;
-    if(b==NULL){
-        return a;
-    }
-    if(a->data<b->data){
-        a->next=merge(a->next, b);
-        return a;
-    }
-    else{
-        b->next=merge(a, b->next);
-        return b;
-    }
-  }
-    //Function to merge K sorted linked list.
-    Node * mergeKLists(Node *arr[], int K)
-    {
-           // Your code here
-           Node* result = NULL;
-           for(int i=0; i<K; i++){
-               result = merge(result, arr[i]);
-           }
-           return result;
-    }
+   Node* merge(Node*a,Node*b)
+ {
+     Node*ans=new Node(0);
+     Node*temp=ans;
+     while(a!=NULL&&b!=NULL)
+     {
+         if(a->data<b->data)
+         {
+             temp->next=a;
+             a=a->next;
+         }
+         else
+         {
+             temp->next=b;
+             b=b->next;
+         }
+         temp=temp->next;
+     }
+     while(a)
+     {
+         temp->next=a;
+         a=a->next;
+         temp=temp->next;
+     }
+       while(b)
+     {
+         temp->next=b;
+         b=b->next;
+        temp=temp->next;
+     }
+     return ans->next;
+ }
+   //Function to merge K sorted linked list.
+   Node * mergeKLists(Node *arr[], int K)
+   {
+          Node*root=arr[0];
+          for(int i=1;i<K;i++)
+          {
+              root=merge(root,arr[i]);
+          }
+          return root;
+   }
 };
 
 

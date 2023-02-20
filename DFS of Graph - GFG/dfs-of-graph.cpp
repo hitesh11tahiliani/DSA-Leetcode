@@ -8,7 +8,6 @@ class Solution {
 private:
 
 void dfs(int node, vector<int> adj[], int vis[], vector<int>& ls){
-    
     vis[node]=1; //marking the node as visited 
     ls.push_back(node);
     // traversing all its neighbours
@@ -25,11 +24,8 @@ void dfs(int node, vector<int> adj[], int vis[], vector<int>& ls){
         // Code here'
         int vis[V] = {0} ; //visited array
         int start =0;
-        
         vector<int> ls;  //vector to store dfs form 
-        
         dfs (start, adj, vis, ls);
-        
         return ls;
     }
 };

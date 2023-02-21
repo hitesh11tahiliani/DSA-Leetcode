@@ -10,7 +10,6 @@ class Solution
 private:
     bool dfs(int node, int parent, int vis[], vector<int> adj[]){
         vis[node] =1;
-        
         // visit adjacent nodes
         for (auto adjacentNode : adj[node]){
             // unvisited adjacent node
@@ -26,9 +25,6 @@ private:
     }
     
   public:
-  
-//   DFS METHOD 
-  
   bool isCycle(int V, vector<int> adj[]) {
     int vis[V] = {0};
       

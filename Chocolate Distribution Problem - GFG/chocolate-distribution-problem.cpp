@@ -7,7 +7,7 @@ using namespace std;
 class Solution{
     public:
     long long findMinDiff(vector<long long> a, long long n, long long m){
-        sort(a.begin(),a.end());
+        sort(a.begin(), a.end());
         long long mini = INT_MAX;
         long long l=0, r=m-1;
         while(r<n){

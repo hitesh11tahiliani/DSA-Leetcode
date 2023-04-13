@@ -2,7 +2,7 @@ class Solution {
 public:
     bool validateStackSequences(vector<int>& pushed, vector<int>& popped) {
         stack<int> st; // Create a stack
-        
+    
         int j = 0; // Intialise one pointer pointing on popped array
         
         for(auto val : pushed){

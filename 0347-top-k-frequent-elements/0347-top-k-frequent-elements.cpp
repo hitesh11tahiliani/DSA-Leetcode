@@ -1,22 +1,21 @@
 class Solution {
 public:
     vector<int> topKFrequent(vector<int>& nums, int k) {
-        int n=nums.size();
-        unordered_map<int,int> m;
-        for(int i=0;i<n;i++){
-            m[nums[i]]++;
+        unordered_map<int,int> map;
+        for(int num : nums){
+            map[num]++;
         }
-        priority_queue<pair<int,int>> pq;  //Fisrt element stores frequency and second element value
-		//As we have not use any compare function max heap will sort according to first element of pair
-        unordered_map<int,int>::iterator itr;
-        for(itr=m.begin();itr!=m.end();itr++){
-            pq.push(make_pair(itr->second,itr->first));
+        
+        vector<int> res;
+        // pair<first, second>: first is frequency,  second is number
+        priority_queue<pair<int,int>> pq; 
+        for(auto it = map.begin(); it != map.end(); it++){
+            pq.push(make_pair(it->second, it->first));
+            if(pq.size() > (int)map.size() - k){
+                res.push_back(pq.top().second);
+                pq.pop();
+            }
         }
-        vector<int> ans(k);
-        for(int i=0;i<k;i++){
-            ans[i]=pq.top().second;
-            pq.pop();
-        }
-        return ans;
+        return res;
     }
 };

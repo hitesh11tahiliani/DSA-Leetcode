@@ -14,7 +14,7 @@ public:
     int maxLevelSum(TreeNode* root) {
       if(root==NULL) return 0;
       int m=INT_MIN;
-     int f=0,i=0;
+      int f=0,i=0;
       queue<TreeNode*>q;
       q.push(root);
       while(!q.empty()){
@@ -31,8 +31,8 @@ public:
           }
           i++;
           if(m<s){
-             m=s;
-              f=i;
+            m=s;
+            f=i;
           }
       }
         return f;

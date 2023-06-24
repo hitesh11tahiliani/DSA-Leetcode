@@ -1,5 +1,7 @@
 /**
  * Definition for singly-linked list.
+/**
+ * Definition for singly-linked list.
  * struct ListNode {
  *     int val;
  *     ListNode *next;
@@ -10,36 +12,41 @@
  */
 class Solution {
 public:
+    ListNode*reverseLL(ListNode*head){
+        if(head==NULL || head->next==NULL){
+            return head;
+        }
+        ListNode*temp=reverseLL(head->next);
+        head->next->next=head;
+        head->next=NULL;
+        return temp;
+    }
+    ListNode*mid(ListNode*head){
+        ListNode*slow=head;
+        ListNode*fast=head->next;
+        while(fast!=NULL && fast->next!=NULL){
+            slow=slow->next;
+            fast=fast->next->next;
+        }
+        return slow;
+    }
     bool isPalindrome(ListNode* head) {
-        
-        // finding the mid
-        ListNode* slow = head;
-        ListNode* fast = head;
-        
-        while(fast!=NULL and fast->next!=NULL){
-            slow = slow->next;
-            fast = fast->next->next;
+        if(head==NULL){
+            return false;
         }
-        
-        
-        // reversing the list from mid
-        ListNode* ptr = NULL;
-        ListNode* next = NULL;
-        while(slow!=NULL){
-            next = slow->next;
-            slow->next = ptr;
-            ptr = slow;
-            slow = next;
+        if(head->next==NULL){
+            return true;
         }
-        
-        
-        // finally checking the elements with the reversal mid elements
-        while (ptr!=NULL){
-            if(head->val != ptr->val){
+        ListNode*midnode=mid(head);
+        midnode=midnode->next;
+        ListNode*reversedmid=reverseLL(midnode);
+        ListNode*temp=head;
+        while(temp!=midnode && reversedmid!=NULL){
+            if(temp->val!=reversedmid->val){
                 return false;
             }
-            head = head->next;
-            ptr = ptr->next;
+            temp=temp->next;
+            reversedmid=reversedmid->next;
         }
         return true;
     }
